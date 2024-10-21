@@ -1,60 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>                                   <!--
-  Nome: Beatriz Macedo da Silva     N°3        Turma: 3°B
-  Nome: Daniel Lozano Borges Pires  N°5 
-  Nome: Isabelle Carvalho Salun     N°12
-  Nome: Kauã Henrique Viera         N°18                                                           
-  Nome: Vinícius Arnaut Mariano     N°29                  -->
+<head>
+    <!--
+  Nome: Daniel Lozano Borges Pires   N°5        Turma: 3°B
+  Nome: Isabelle Carvalho Salun      N°12
+  Nome: Izabella Savassa Petrarolli  N°14
+  Nome: Kauã Henrique Viera          N°18   
+  Nome: Munir Rebouças               N°23                                                        
+  Nome: Vinícius Arnaut Mariano      N°29                  -->
     <meta charset="UTF-8">
-    
-    <link href='https://fonts.googleapis.com/css?family=Russo One' rel='stylesheet'><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio-Vinícius</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Números e Ordenação</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="cabecalho"> 
- 
-         
-  <h1 class="cabecalho_titulo"><img class="cabecalho_img" src="./img/alcinalogo.png"> EME Prof Alcina Dantas Feijão </h1>
- 
-    
-<nav class="cabecalho_menu">
-<a class="cabecalho_links" href="index.html">Home</a>
-<a class="cabecalho_links" href="Aboutme.html">Sobre mim</a>
-</nav>
-</header>
 
-<main class="Main">
-<h2 class="Main_titulo">Portfólio <strong class="nome">Vinícius Arnaut Mariano</strong></h2>
-<br>
-<aside>
-<p class="Main_aside"> Ah, então, sou um cara tranquilo, Curto muito treinar. Gosto muito dos meus momentos sozinho,
-  eles são essenciais pra mim, sabe? É quando recarrego as energias e mergulho nos meus interesses.
-  Acho que essa dedicação ao bem-estar físico mostra meu equilíbrio...
-</p>
-</aside>
-<img class="Main_img" src="./img/vinig2.png">
-<br>
-</main>
-<footer class="Footer">
-<h3 class ="Footer_subtitulo">Acesse as minhas redes sociais:</h3>
-
-<div class="Footer_linkM">
-<a class="Footer_links" href="https://www.instagram.com/vinii_gym"><img class="Footer_linksimg" src="./img/intagramR.png"> Instagram</a>
-
-<a class="Footer_links" href="https://www.tiktok.com/@vinii_gym" ><img class="Footer_linksimg" src="./img/tiktekoR.png"> TikTok</a>
-
-<a class="Footer_links" href="https://pin.it/1kb6hlxA2"><img class="Footer_linksimg" src="./img/pinterestR.png">Pinterest</a>
-
+<div class="container">
+    <h2>Inserir e Ordenar Números</h2>
+    <input type="number" id="numero" placeholder="Insira um número">
+    <br>
+    <button onclick="inserirNumero()">Inserir</button>
+    <button onclick="ordenarNumeros()">Ordenar</button>
+    <label id="listaOriginal">Lista original: </label>
+    <label id="listaOrdenada">Lista ordenada: </label>
 </div>
 
-</footer>
+<script>
+    let numeros = [];
+    let contador = 0;
 
-<img src="">
+    function inserirNumero() {
+        const num = document.getElementById("numero").value;
+        if (num !== "") {
+            numeros[contador] = parseInt(num);
+            contador++;
+            
+            let listaStr = "";
+            for (let i = 0; i < contador; i++) {
+                listaStr += numeros[i] + (i < contador - 1 ? ", " : "");
+            }
 
+            document.getElementById("listaOriginal").innerText = "Lista original: " + listaStr;
+            document.getElementById("numero").value = "";
+        }
+    }
 
+    function ordenarNumeros() {
+        let fim = contador;
 
+        for (let i = 0; i < fim - 1; i++) {
+            for (let f = i + 1; f < fim; f++) {
+                if (numeros[i] > numeros[f]) {
+                    let temp = numeros[i];
+                    numeros[i] = numeros[f];
+                    numeros[f] = temp;
+                }
+            }
+        }
+
+        let listaOrdenadaStr = "";
+        for (let i = 0; i < fim; i++) {
+            listaOrdenadaStr += numeros[i] + (i < fim - 1 ? ", " : "");
+        }
+
+        document.getElementById("listaOrdenada").innerText = "Lista ordenada: " + listaOrdenadaStr;
+    }
+</script>
 
 </body>
 </html>
