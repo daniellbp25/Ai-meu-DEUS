@@ -26,25 +26,29 @@
 </div>
 
 <script>
+    /*Daniel*/
     let numeros = [];
     let contador = 0;
 
     function inserirNumero() {
         const num = document.getElementById("numero").value;
-        if (num !== "") {
-            numeros[contador] = parseInt(num);
-            contador++;
+        if (num !== "") /*se diferente d vazio*/
+            numeros[contador] = parseInt(num);/*converte o n°-->*/
+            contador++;/*avança o array*/
             
             let listaStr = "";
-            for (let i = 0; i < contador; i++) {
-                listaStr += numeros[i] + (i < contador - 1 ? ", " : "");
+            for (let i = 0; i < contador; i++) {/*-usado p ver todos os nummeros inseridos*/
+                listaStr += numeros[i] + (i < contador - 1 ? ", " : "");/*a cada interação um n° é add a strnig,
+                 se o ne for o ultimo add uma virgula*/
             }
 
             document.getElementById("listaOriginal").innerText = "Lista original: " + listaStr;
             document.getElementById("numero").value = "";
         }
     }
+    /*Daniel*/
 
+    /*Izabella*/
     function ordenarNumeros() {
         let fim = contador;
 
@@ -65,6 +69,7 @@
 
         document.getElementById("listaOrdenada").innerText = "Lista ordenada: " + listaOrdenadaStr;
     }
+    /*Izabella*/
 </script>
 
 </body>
