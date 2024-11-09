@@ -32,14 +32,13 @@
 
     function inserirNumero() {
         const num = document.getElementById("numero").value;
-        if (num !== "") /*se diferente d vazio*/
-            numeros[contador] = parseInt(num);/*converte o n°-->*/
-            contador++;/*avança o array*/
+        if (num !== "") {
+            numeros[contador] = parseInt(num);
+            contador++;
             
             let listaStr = "";
-            for (let i = 0; i < contador; i++) {/*-usado p ver todos os nummeros inseridos*/
-                listaStr += numeros[i] + (i < contador - 1 ? ", " : "");/*a cada interação um n° é add a strnig,
-                 se o ne for o ultimo add uma virgula*/
+            for (let i = 0; i < contador; i++) {
+                listaStr += numeros[i] + (i < contador - 1 ? ", " : "");
             }
 
             document.getElementById("listaOriginal").innerText = "Lista original: " + listaStr;
